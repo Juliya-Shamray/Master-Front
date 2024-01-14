@@ -32,6 +32,12 @@ a{
   text-decoration: none;
   color: inherit;
 }
+button{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  
+}
   }
   .container {
     
@@ -46,7 +52,7 @@ a{
         max-width: 744px;
 }
 
-    @media screen and (min-width:1440px) {
+    @media screen and (min-width:1400px) {
         max-width: 1280px;
     
 }

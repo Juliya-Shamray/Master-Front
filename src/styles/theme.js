@@ -7,6 +7,7 @@ const theme = {
     lightGreen: '#BCE6D2',
     lightGrey: '#F3F3F3',
     white: '#FAFAFA',
+    borderColor: 'rgba(243, 243, 243, 0.20)',
   },
 };
 
