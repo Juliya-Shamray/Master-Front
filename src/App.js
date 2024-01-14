@@ -1,5 +1,11 @@
+import WelcomePage from 'pages/WelcomePage';
+
 const App = () => {
-  return <div>Hello</div>;
+  return (
+    <>
+      <WelcomePage />
+    </>
+  );
 };
 
 export default App;

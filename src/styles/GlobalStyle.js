@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
    font-size: 16px;
    font-style: normal;
    font-weight: 400;
+   min-height: 100vh;
 
 h1,
 h2,
@@ -34,19 +35,19 @@ a{
   }
   .container {
     
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-left: auto;
     margin-right: auto;
     @media screen and (min-width:320px) {
         max-width: 375px;
 }
     @media screen and (min-width:768px) {
-        max-width: 768px;
+        max-width: 744px;
 }
 
-    @media screen and (min-width:1240px) {
-        max-width: 1240px;
+    @media screen and (min-width:1440px) {
+        max-width: 1280px;
     
 }
 
