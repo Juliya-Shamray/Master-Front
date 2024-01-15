@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import DatePicker from 'react-datepicker';
 
 export const StyledDiv = styled.div`
   display: flex;
@@ -22,12 +23,61 @@ export const StyledTitle = styled.h2`
 export const StyledForm = styled.form`
   .react-datepicker-wrapper {
     width: 100%;
+    border-radius: 8px;
   }
   .react-datepicker {
-    background-color: #161f37;
+    background-color: ${props => props.theme.colors.secondary};
+    border: none;
+    font-family: Manrope;
     width: 219px;
   }
   .react-datepicker__header {
+    width: 219px;
+    border-bottom: none;
+    background-color: #161f37;
+    padding: 14px 14px 0 14px;
+    font-family: Manrope;
+  }
+  .react-datepicker__month {
+    margin: 0;
+    height: max-content;
+    padding-bottom: 14px;
+  }
+  .react-datepicker__current-month {
+    color: ${props => props.theme.colors.lightGrey};
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid ${props => props.theme.colors.borderColor};
+  }
+  .react-datepicker__day {
+    color: ${props => props.theme.colors.lightGrey};
+    border-radius: 50%;
+    margin: 0;
+    &:hover {
+      color: ${props => props.theme.colors.secondary};
+    }
+  }
+  .react-datepicker__day-names {
+    padding: 0;
+    margin-bottom: 5px;
+  }
+  .react-datepicker__day-name {
+    color: ${props => props.theme.colors.placeholderColor};
+    padding-top: 14px;
+    margin: 0;
+  }
+  .react-datepicker__navigation {
+    margin-top: 10px;
+  }
+  .react-datepicker__day--selected,
+  .react-datepicker__day--today {
+    color: ${props => props.theme.colors.secondary};
+    background-color: ${props => props.theme.colors.white};
   }
 
   width: 280px;
@@ -46,6 +96,39 @@ export const StyledLi = styled.li`
 `;
 
 export const StyledInput = styled.input`
+  font-size: 14px;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid ${props => props.theme.colors.borderColor};
+  border-radius: 200px;
+  padding: 18px 24px;
+  transition: border 250ms linear;
+  color: ${props => props.theme.colors.lightGrey};
+  &::placeholder {
+    transition: color 250ms linear;
+    color: ${props => props.theme.colors.placeholderColor};
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid ${props => props.theme.colors.placeholderColor};
+    &::placeholder {
+      color: ${props => props.theme.colors.lightGrey};
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 17px;
+    &::placeholder {
+      font-size: 17px;
+      line-height: 1.56;
+    }
+  }
+`;
+
+export const StyledInputDate = styled(DatePicker)`
   font-size: 14px;
   width: 100%;
   background-color: transparent;

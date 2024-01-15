@@ -4,21 +4,19 @@ import {
   StyledDiv,
   StyledForm,
   StyledInput,
+  StyledInputDate,
   StyledLi,
   StyledText,
   StyledTitle,
 } from './SignupPage.styled';
 import { Link } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
-import { forwardRef, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import { useState } from 'react';
+import { addDays, subDays } from 'date-fns';
 
 const SignupPage = () => {
   const [startDate, setStartDate] = useState();
 
-  const ExampleCustomInput = forwardRef(({ onClick }, ref) => (
-    <StyledInput placeholder="dd/mm/yyyy" onClick={onClick} ref={ref} />
-  ));
   return (
     <StyledWrap>
       <StyledDiv className="container">
@@ -29,11 +27,18 @@ const SignupPage = () => {
               <StyledInput type="text" placeholder="Name" />
             </StyledLi>
             <StyledLi>
-              <DatePicker
+              <StyledInputDate
                 selected={startDate}
-                onChange={date => setStartDate(date)}
                 popperPlacement="bottom-end"
-                customInput={<ExampleCustomInput />}
+                onChange={date => setStartDate(date)}
+                dateFormat="dd/MM/yyyy"
+                placeholderText="dd/mm/yyyy"
+                excludeDateIntervals={[
+                  {
+                    start: subDays(new Date(), 1),
+                    end: addDays(new Date(), 1000),
+                  },
+                ]}
               />
             </StyledLi>
             <StyledLi>
