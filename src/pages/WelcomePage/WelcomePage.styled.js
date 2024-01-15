@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-import bgMob from '../styles/images/Start-mob@1x.webp';
-import bgMob2x from '../styles/images/Start-mob@2x.webp';
-import bgTab from '../styles/images/Start-tab@1x.webp';
-import bgTab2x from '../styles/images/Start-tab@2x.webp';
-import bgDesk from '../styles/images/Start-desk@1x.webp';
-import bgDesk2x from '../styles/images/Start-desk@2x.webp';
+import bgMob from '../../styles/images/Start-mob@1x.webp';
+import bgMob2x from '../../styles/images/Start-mob@2x.webp';
+import bgTab from '../../styles/images/Start-tab@1x.webp';
+import bgTab2x from '../../styles/images/Start-tab@2x.webp';
+import bgDesk from '../../styles/images/Start-desk@1x.webp';
+import bgDesk2x from '../../styles/images/Start-desk@2x.webp';
+import { NavLink } from 'react-router-dom';
 
 export const StyledWrap = styled.div`
   display: flex;
@@ -13,6 +14,7 @@ export const StyledWrap = styled.div`
   justify-content: center;
   height: 100vh;
   background-image: url(${bgMob});
+  background-color: #0a0a11;
   background-size: cover;
   background-repeat: no-repeat;
   @media (min-device-pixel-ratio: 2),
@@ -99,6 +101,7 @@ export const commonButtonStyles = `
   font-size: 14px;
   font-weight: 600;
   line-height: 1.29;
+  transition: box-shadow 250ms linear;
   @media screen and (min-width:768px){
     font-size: 16px;
     line-height: 1.13;
@@ -106,15 +109,24 @@ export const commonButtonStyles = `
   }
 `;
 
-export const LightButton = styled.button`
+export const LightButton = styled(NavLink)`
   ${commonButtonStyles}
   color: ${props => props.theme.colors.secondary};
   background-color: ${props => props.theme.colors.lightGrey};
+  &:focus,
+  &:hover {
+    box-shadow: 0 1px 3px 3px grey;
+  }
 `;
 
-export const DarkButton = styled.button`
+export const DarkButton = styled(NavLink)`
   ${commonButtonStyles}
   color: ${props => props.theme.colors.lightGrey};
   border: 1px solid ${props => props.theme.colors.borderColor};
+
   margin-right: 0;
+  &:hover,
+  &:focus {
+    box-shadow: 0 1px 3px 3px grey;
+  }
 `;

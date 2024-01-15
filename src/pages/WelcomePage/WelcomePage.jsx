@@ -18,8 +18,8 @@ const WelcomePage = () => {
           retrieve your own recipes at any time.
         </StyledText>
         <StyledWrapButtons>
-          <LightButton>Sign Up</LightButton>
-          <DarkButton>Sign In</DarkButton>
+          <LightButton to="/signup">Sign Up</LightButton>
+          <DarkButton to="/signin">Sign In</DarkButton>
         </StyledWrapButtons>
       </div>
     </StyledWrap>

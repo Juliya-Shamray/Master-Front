@@ -8,6 +8,7 @@ const theme = {
     lightGrey: '#F3F3F3',
     white: '#FAFAFA',
     borderColor: 'rgba(243, 243, 243, 0.20)',
+    placeholderColor: 'rgba(243, 243, 243, 0.5)',
   },
 };
 
