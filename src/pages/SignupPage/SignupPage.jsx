@@ -3,6 +3,7 @@ import {
   StyledButton,
   StyledDiv,
   StyledForm,
+  StyledIcon,
   StyledInput,
   StyledInputDate,
   StyledLi,
@@ -13,6 +14,8 @@ import { Link } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useState } from 'react';
 import { addDays, subDays } from 'date-fns';
+import calendarIcon from '../../styles/images/icons/calendar.svg';
+import PasswordInput from 'components/PasswordInput/PasswordInput';
 
 const SignupPage = () => {
   const [startDate, setStartDate] = useState();
@@ -40,12 +43,14 @@ const SignupPage = () => {
                   },
                 ]}
               />
+              <StyledIcon src={calendarIcon} alt="calendar" />
             </StyledLi>
             <StyledLi>
               <StyledInput type="email" placeholder="Email" />
             </StyledLi>
             <StyledLi>
-              <StyledInput type="password" placeholder="Password" />
+              {/* <StyledInput type="password" placeholder="Password" /> */}
+              <PasswordInput />
             </StyledLi>
             <StyledButton>Sign up</StyledButton>
           </ul>

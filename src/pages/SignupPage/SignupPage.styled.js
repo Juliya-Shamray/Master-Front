@@ -93,6 +93,12 @@ export const StyledForm = styled.form`
 export const StyledLi = styled.li`
   margin-bottom: 14px;
   width: 100%;
+  position: relative;
+`;
+export const StyledIcon = styled.img`
+  position: absolute;
+  right: 18px;
+  top: 17px;
 `;
 
 export const StyledInput = styled.input`
