@@ -202,3 +202,11 @@ export const StyledText = styled.p`
     line-height: 1.29;
   }
 `;
+
+export const StyleError = styled.p`
+  color: #da1414;
+  font-size: 12px;
+  line-height: 1.17;
+  margin-top: 8px;
+  margin-left: 15px;
+`;

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledIcon = styled.button`
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
   color: ${props => props.theme.colors.white};
+  margin-left: -42px;
+`;
+
+export const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
 `;
