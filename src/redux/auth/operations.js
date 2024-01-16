@@ -38,25 +38,25 @@ export const loginThunk = createAsyncThunk(
   }
 );
 
-// export const logoutThunk = createAsyncThunk('logout', async (_, thunkAPI) => {
-//   try {
-//     await instance.post('users/logout');
-//     clearToken();
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue(error.message);
-//   }
-// });
+export const logoutThunk = createAsyncThunk('logout', async (_, thunkAPI) => {
+  try {
+    await instance.post('/api/auth/signout');
+    clearToken();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
-// export const refreshThunk = createAsyncThunk('refresh', async (_, thunkAPI) => {
-//   const savedToken = thunkAPI.getState().auth.token;
+export const refreshThunk = createAsyncThunk('refresh', async (_, thunkAPI) => {
+  const savedToken = thunkAPI.getState().auth.token;
 
-//   if (!savedToken) return thunkAPI.rejectWithValue('You need login!!!');
+  if (!savedToken) return thunkAPI.rejectWithValue('You need login!!!');
 
-//   try {
-//     setToken(savedToken);
-//     const { data } = await instance.get('users/current');
-//     return data;
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue(error.message);
-//   }
-// });
+  try {
+    setToken(savedToken);
+    const { data } = await instance.get('/api/users/current');
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

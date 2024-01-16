@@ -22,7 +22,6 @@ const emailRexExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const SigninPage = () => {
   const { dateOfBirth } = useDateOfBirth();
-  console.log(dateOfBirth);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -35,7 +34,6 @@ const SigninPage = () => {
   } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
     data.isAdult = isAdult(dateOfBirth);
 
     dispatch(loginThunk(data))
