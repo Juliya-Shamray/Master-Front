@@ -10,7 +10,7 @@ const PrivateRoutes = ({ children }) => {
   return isLogin ? (
     children
   ) : (
-    <Navigate to="/signin" state={{ from: location }} />
+    <Navigate to="/welcome" state={{ from: location }} />
   );
 };
 

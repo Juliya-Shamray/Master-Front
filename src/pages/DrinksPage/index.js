@@ -1,3 +1,3 @@
-import DrinksPage from './DrinksPage';
+import DrinkPage from './DrinkPage';
 
-export default DrinksPage;
+export default DrinkPage;

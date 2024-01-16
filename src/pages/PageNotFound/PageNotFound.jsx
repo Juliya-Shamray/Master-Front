@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { StyledWrapper } from './PageNotFound.styled';
 
-export const PageNotFound = () => {
+const PageNotFound = () => {
   return (
     <StyledWrapper>
       <h1>Ooops... Page is not found</h1>
@@ -13,3 +13,5 @@ export const PageNotFound = () => {
     </StyledWrapper>
   );
 };
+
+export default PageNotFound;
