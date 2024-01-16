@@ -17,13 +17,10 @@ import calendarIcon from '../../styles/images/icons/calendar.svg';
 import PasswordInput from 'components/PasswordInput/PasswordInput';
 import { Controller, useForm } from 'react-hook-form';
 import { addDays, subDays } from 'date-fns';
+import changeFormatDate from 'helpers/changeFormatDate';
 
 const emailRexExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-// const minLength = {
-//   value: 8,
-//   message: `Minimum length should be 8 characters`,
-// };
 const SignupPage = () => {
   const {
     register,
@@ -34,20 +31,19 @@ const SignupPage = () => {
   } = useForm();
 
   const onSubmit = data => {
+    data.birthDay = changeFormatDate(data.birthDay);
     console.log(data);
-    // const fetchAdd = async () => {
-    //   try {
-    //     const res = await addDocument(data);
-    //     setBicycles(prevBicycles => [...prevBicycles, res.data]);
-    //     toast.success('New bike added successfully', {
-    //       position: 'top-right',
-    //     });
-    //   } catch (error) {
-    //     console(error);
-    //   }
-    // };
-    // fetchAdd();
-    // reset();
+
+    const fetchStart = async () => {
+      try {
+        // // const res = await registerUser(data);
+        // <Navigate to="signin" />;
+        // return res;
+      } catch (error) {
+        console(error);
+      }
+    };
+    fetchStart();
   };
 
   return (
