@@ -11,17 +11,23 @@ import {
   StyledText,
   StyledTitle,
 } from './SignupPage.styled';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import calendarIcon from '../../styles/images/icons/calendar.svg';
 import PasswordInput from 'components/PasswordInput/PasswordInput';
 import { Controller, useForm } from 'react-hook-form';
 import { addDays, subDays } from 'date-fns';
 import changeFormatDate from 'helpers/changeFormatDate';
+import { useDispatch } from 'react-redux';
+import { registerThunk } from '../../redux/auth/operations';
+import { toast } from 'react-toastify';
+import { useDateOfBirth } from 'hooks/useDateOfBirth';
 
 const emailRexExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const SignupPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -30,20 +36,21 @@ const SignupPage = () => {
     control,
   } = useForm();
 
-  const onSubmit = data => {
-    data.birthDay = changeFormatDate(data.birthDay);
-    console.log(data);
+  const { setDateOfBirth } = useDateOfBirth();
 
-    const fetchStart = async () => {
-      try {
-        // // const res = await registerUser(data);
-        // <Navigate to="signin" />;
-        // return res;
-      } catch (error) {
-        console(error);
-      }
-    };
-    fetchStart();
+  const onSubmit = data => {
+    setDateOfBirth(data.birthDay);
+    data.birthDay = changeFormatDate(data.birthDay);
+
+    dispatch(registerThunk(data))
+      .unwrap()
+      .then(() => {
+        toast.warning(
+          `Check your email, we have sent you a confirmation email!`
+        );
+        navigate('/signin');
+      })
+      .catch(() => toast.error('Data is not valid'));
   };
 
   return (

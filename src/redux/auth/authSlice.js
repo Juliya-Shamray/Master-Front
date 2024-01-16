@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  //   loginThunk,
+  loginThunk,
   //   logoutThunk,
   //   refreshThunk,
   registerThunk,
@@ -39,12 +39,12 @@ export const authSlice = createSlice({
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.isLogin = true;
+      })
+      .addCase(loginThunk.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.token;
+        state.isLogin = true;
       });
-    //   .addCase(loginThunk.fulfilled, (state, { payload }) => {
-    //     state.user = payload.user;
-    //     state.token = payload.token;
-    //     state.isLogin = true;
-    //   });
   },
 });
 

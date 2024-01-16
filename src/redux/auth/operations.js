@@ -5,13 +5,13 @@ export const instance = axios.create({
   baseURL: 'https://masterdb.onrender.com',
 });
 
-// export const setToken = token => {
-//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
+export const setToken = token => {
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
-// export const clearToken = () => {
-//   instance.defaults.headers.common.Authorization = '';
-// };
+export const clearToken = () => {
+  instance.defaults.headers.common.Authorization = '';
+};
 
 export const registerThunk = createAsyncThunk(
   'register',
@@ -25,18 +25,18 @@ export const registerThunk = createAsyncThunk(
   }
 );
 
-// export const loginThunk = createAsyncThunk(
-//   'login',
-//   async (credential, thunkAPI) => {
-//     try {
-//       const { data } = await instance.post('users/login', credential);
-//       setToken(data.token);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const loginThunk = createAsyncThunk(
+  'login',
+  async (credential, thunkAPI) => {
+    try {
+      const { data } = await instance.post('/api/auth/signin', credential);
+      setToken(data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 // export const logoutThunk = createAsyncThunk('logout', async (_, thunkAPI) => {
 //   try {

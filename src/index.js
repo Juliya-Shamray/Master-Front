@@ -10,8 +10,10 @@ import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { persistor, store } from './redux/store';
+import { DateOfBirthProvider } from 'hooks/useDateOfBirth';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,7 +24,9 @@ root.render(
       <BrowserRouter>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
-            <App />
+            <DateOfBirthProvider>
+              <App />
+            </DateOfBirthProvider>
           </ThemeProvider>
         </PersistGate>
       </BrowserRouter>

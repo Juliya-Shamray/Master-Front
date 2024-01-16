@@ -10,12 +10,22 @@ import {
   StyledTitle,
 } from 'pages/SignupPage/SignupPage.styled';
 import { StyledWrap } from 'pages/WelcomePage/WelcomePage.styled';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { loginThunk } from './../../redux/auth/operations';
+import isAdult from 'helpers/isAdult';
+import { useDateOfBirth } from 'hooks/useDateOfBirth';
+import { toast } from 'react-toastify';
 
 const emailRexExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const SigninPage = () => {
+  const { dateOfBirth } = useDateOfBirth();
+  console.log(dateOfBirth);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -26,17 +36,15 @@ const SigninPage = () => {
 
   const onSubmit = data => {
     console.log(data);
+    data.isAdult = isAdult(dateOfBirth);
 
-    const fetchStart = async () => {
-      try {
-        //  const res = await registerUser(data);
-        //  <Navigate to="signin" />;
-        //  return res;
-      } catch (error) {
-        console(error);
-      }
-    };
-    fetchStart();
+    dispatch(loginThunk(data))
+      .unwrap()
+      .then(() => {
+        toast.success(`Welcome to App`);
+        navigate('/home');
+      })
+      .catch(() => toast.error('Data is not valid'));
   };
 
   return (
